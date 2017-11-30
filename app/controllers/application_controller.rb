@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_url, alert: "Not authorized" if current_user.nil?
   end
 
+  def admin?
+    current_user.admin
+  end
+  helper_method :admin?
+
 end

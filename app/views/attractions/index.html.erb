@@ -1,4 +1,11 @@
 <h1> All Rides! </h1>
-<% @attractions.each do |a| %>
-<%= link_to "Go on #{a.name}", attraction_path(a) %><br>
+<% if !admin? %>
+  <% @attractions.each do |a| %>
+    <%= link_to "Go on #{a.name}", attraction_path(a) %><br>
+  <% end %>
+<% else %>
+  <%= link_to "New Attraction", new_attraction_path %>
+  <% @attractions.each do |a| %>
+    <%= link_to "Show #{a.name}", attraction_path(a) %></br>
+  <% end %>
 <% end %>

@@ -1,8 +1,13 @@
 class RidesController < ApplicationController
+
   def take_ride
-    @attraction = Attraction.find(params[:attraction_id])
-    @ride = Ride.find(params[:ride_id])
-    if @ride.take_ride
-      redirect_to user_path(@ride.user), notice: "Thanks for riding the #{@attraction.name}"
+    @ride = Ride.new
+    @ride.attraction = Attraction.find(params[:ride][:attraction_id])
+    @ride.user = current_user
+    @ride.save
+    message = @ride.take_ride
+    redirect_to user_path(@ride.user), notice: message
   end
+
+
 end
