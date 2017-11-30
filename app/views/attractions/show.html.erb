@@ -1,0 +1,8 @@
+<h1><%= @attraction.name %></h1>
+<h2>Tickets: <%= @attraction.tickets %></h2>
+<h2>Nausea Rating: <%= @attraction.nausea_rating %></h2>
+<h2>Happiness Rating: <%= @attraction.happiness_rating %></h2>
+<h2>Minimum Height: <%= @attraction.min_height %> inches</h2>
+<br>
+<br>
+<%= button_to "Go on this ride", take_ride_path, method: :post, params: {ride_id: @ride.id} %>
